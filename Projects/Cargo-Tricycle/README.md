@@ -1,20 +1,37 @@
-# 🚲 OHO Cargo Tricycle Project
+# 🚲 OHO Morocco - Cargo Tricycle Project
 
-## ⚡ Overview
-Electric Cargo Tricycle designed for urban delivery and heavy load transport.
+## 🎯 Overview
+This project is an open-source electric cargo tricycle designed for urban transport in Morocco.
 
-## 🎯 Goal
-Build a low-cost, efficient electric cargo system (80–150kg capacity).
+Inspired by:
+https://www.werkstatt-lastenrad.de
 
-## 🔧 Core Expertise Used
-- MOSFET power systems
-- BMS battery protection
-- Scooter electric repair knowledge
+## ⚙️ Technical Specs
+- Load capacity: 150kg
+- Wheels: 3 × 26"
+- Frame: Steel
+- Front cargo box: 0.9m × 0.8m × 0.6m
+- Use case: City delivery / cargo transport
 
-## 💡 Vision
-Transform from scooter repair → electric mobility engineering.
+## 🔋 Electrical System
+- Battery: 48V system
+- BMS protection
+- Brushless motor system
+- Safety fuse + controller
 
-## 💼 Potential Uses
-- City delivery
-- Small logistics
-- Personal transport business
+## 🔧 Mechanical System
+- Steel frame welding
+- Stability optimized for front load
+- Reinforced cargo box
+
+## 💡 Goal
+Build a low-cost electric cargo system for Morocco:
+- Delivery business
+- Urban logistics
+- Small transport companies
+
+## 📂 Documentation
+All design files, schematics and BOM are inside this repository.
+
+## 🌍 License
+CC BY-SA 4.0
