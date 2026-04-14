@@ -14,8 +14,7 @@ This repository contains real repair cases and solutions.
 ## 🎯 Mission
 Build a global open-source ecosystem for hardware repair.
 
-## 🌍 Based in Morocco
-لكن الهدف عالمي 🚀
-
+## 🌍 Based in Morocco 
+But the goal is global 🚀 
 ## 📩 Contact
 Available for freelance & consulting
