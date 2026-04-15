@@ -1,0 +1,33 @@
+body {
+  font-family: Arial;
+  background: #0f172a;
+  color: white;
+  margin: 0;
+  padding: 20px;
+}
+
+header {
+  background: #1e293b;
+  padding: 20px;
+  text-align: center;
+}
+
+section {
+  margin-top: 30px;
+  padding: 10px;
+  background: #111827;
+  border-radius: 10px;
+}
+
+img {
+  border-radius: 10px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid #444;
+  padding: 5px;
+}
