@@ -1,0 +1,7 @@
+Part,Material,Dimensions,Qty,Notes
+Frame Tube,Steel A36,20x20mm,8,Main structure
+Angle Steel,Steel,25x25mm,8,Cargo box
+Flat Bar,Steel,30x4mm,4,Support
+Main Tube,Steel,60mm,1,Core frame
+Wheels,Reused,26 inch,3,Bicycle wheels
+Brakes,Mechanical,,2,Front brakes
