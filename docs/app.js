@@ -51,5 +51,26 @@ const assembly = document.getElementById("assembly");
 steps.forEach((s, i) => {
   const div = document.createElement("div");
   div.innerHTML = `Step ${i+1}: ${s}`;
-  assembly.appendChild(div);
+  assembly.appendChild(div);const base = "../Assets/Images/";
+
+const folders = ["Render", "Assembly", "Parts"];
+
+const gallery = document.getElementById("gallery");
+
+folders.forEach(folder => {
+  fetch(base + folder)
+    .then(() => {
+// GitHub Pages لا يسمح list dir → workaround:
+      const images = [
+        "200px-Tricycle_cargo_bike.png"
+      ];
+
+      images.forEach(img => {
+        const el = document.createElement("img");
+        el.src = base + folder + "/" + img;
+        gallery.appendChild(el);
+      });
+    });
 });
+});
+
