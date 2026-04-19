@@ -1,30 +1,25 @@
-// ==========================
-// 🔥 IMAGE GALLERY (STABLE)
-// ==========================
+// 🔥 BASE PATH (IMPORTANT)
+const BASE = "/OHO-Morocco/Assets/Images/";
 
+// 📷 Gallery
 const gallery = document.getElementById("gallery");
 
 const images = [
-  "../Assets/Images/200px-Tricycle_cargo_bike.png",
-  "../Assets/Images/200px-Wl_tcb_1.0_Assembly1-tricycle_cargo_bike_B_001.jpg",
-  "../Assets/Images/200px-Wl_tcb_2.0_Assembly2-0-tricycle_cargo_bike_B_001.jpg",
-  "../Assets/Images/200px-Wl_tcb_3.0_-tricycle_cargo_bike_B_001.jpg"
+  "Render/200px-Tricycle_cargo_bike.png",
+  "Assembly/200px-Wl_tcb_1.0_Assembly1-tricycle_cargo_bike_B_001.jpg",
+  "Parts/200px-Wl_tcb_B1_parts-tricycle_cargo_bike_B_001.jpg"
 ];
 
-images.forEach(src => {
-  const img = document.createElement("img");
-  img.src = src;
-  img.style.width = "220px";
-  img.style.margin = "10px";
-  img.style.borderRadius = "12px";
-  gallery.appendChild(img);
+images.forEach(img => {
+  const el = document.createElement("img");
+  el.src = BASE + img;
+  el.style.width = "220px";
+  el.style.margin = "10px";
+  gallery.appendChild(el);
 });
 
 
-// ==========================
-// 📦 BOM CSV LOADER
-// ==========================
-
+// 📦 BOM
 fetch("data/bom.csv")
   .then(res => res.text())
   .then(text => {
@@ -36,7 +31,7 @@ fetch("data/bom.csv")
 
       row.split(",").forEach(cell => {
         const el = document.createElement(i === 0 ? "th" : "td");
-        el.innerText = cell;
+        el.textContent = cell;
         tr.appendChild(el);
       });
 
@@ -45,23 +40,19 @@ fetch("data/bom.csv")
   });
 
 
-// ==========================
-// 🧩 ASSEMBLY STEPS
-// ==========================
-
+// 🧩 Assembly
 const steps = [
   "Cut steel tubes",
-  "Weld frame base",
-  "Install front wheel mounts",
-  "Attach steering system",
+  "Weld base frame",
+  "Install front wheels",
+  "Setup steering",
   "Final assembly"
 ];
 
 const assembly = document.getElementById("assembly");
 
-steps.forEach((step, i) => {
+steps.forEach((s, i) => {
   const div = document.createElement("div");
-  div.style.margin = "10px";
-  div.innerHTML = `<strong>Step ${i + 1}:</strong> ${step}`;
+  div.innerHTML = `Step ${i + 1}: ${s}`;
   assembly.appendChild(div);
 });
