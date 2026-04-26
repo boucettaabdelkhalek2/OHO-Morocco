@@ -1,5 +1,13 @@
 # OHO Morocco 🇲🇦
 
+## 🧠 Repair Intelligence System
+
+- intelligence/failures → Known failures
+- intelligence/diagnostics → Diagnostic flows
+- intelligence/components → Component knowledge
+- blueprints/ → Standard repairs
+- cases/ → Real repair data
+
 ## Open Hardware Observatory
 
 A project focused on:

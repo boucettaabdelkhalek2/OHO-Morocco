@@ -1,0 +1,8 @@
+{
+  "device": "scooter",
+  "problem": "no power",
+  "component": "mosfet",
+  "cause": "overcurrent",
+  "solution": "replacement",
+  "status": "fixed"
+}
