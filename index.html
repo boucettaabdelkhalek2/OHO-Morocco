@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OHO Morocco — مرصد الأجهزة المفتوحة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d0d0d;
+  --bg2: #161616;
+  --bg3: #1f1f1f;
+  --border: rgba(255,255,255,0.08);
+  --border2: rgba(255,255,255,0.15);
+  --text: #e8e6e0;
+  --text2: #9a9890;
+  --accent: #e8593c;
+  --accent2: #f0a830;
+  --green: #3fb97a;
+  --blue: #4a9fd4;
+  --font: 'IBM Plex Sans Arabic', sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* Header */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  background: rgba(13,13,13,0.95);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.logo-icon {
+  width: 32px; height: 32px;
+  background: var(--accent);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.logo-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+.logo-sub {
+  font-size: 11px;
+  color: var(--text2);
+  font-family: var(--mono);
+}
+.lang-switcher {
+  display: flex;
+  gap: 4px;
+}
+.lang-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: var(--mono);
+  transition: all 0.15s;
+}
+.lang-btn:hover, .lang-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Hero */
+.hero {
+  padding: 4rem 2rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(232,89,60,0.1);
+  border: 1px solid rgba(232,89,60,0.25);
+  color: var(--accent);
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-family: var(--mono);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+.hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+}
+.hero h1 strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+.hero p {
+  color: var(--text2);
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto 2rem;
+}
+
+/* Search box */
+.search-wrap {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto 1rem;
+}
+.search-input {
+  width: 100%;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  padding: 14px 52px 14px 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: var(--font);
+  outline: none;
+  transition: border-color 0.2s;
+  direction: rtl;
+  text-align: right;
+}
+.search-input:focus {
+  border-color: var(--accent);
+  background: var(--bg3);
+}
+.search-input::placeholder { color: var(--text2); }
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text2);
+  font-size: 18px;
+  pointer-events: none;
+}
+.search-clear {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text2);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  display: none;
+  line-height: 1;
+}
+
+/* Quick tags */
+.quick-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+.quick-tag {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.quick-tag:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+/* Stats bar */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+.stat-item { text-align: center; }
+.stat-n {
+  font-size: 1.6rem;
+  font-weight: 600;
+  font-family: var(--mono);
+  color: var(--accent);
+}
+.stat-l { font-size: 12px; color: var(--text2); }
+
+/* Results */
+.results-area {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+.results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.results-count {
+  font-size: 13px;
+  color: var(--text2);
+  font-family: var(--mono);
+}
+.filter-tabs {
+  display: flex;
+  gap: 4px;
+}
+.filter-tab {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: var(--mono);
+  transition: all 0.15s;
+}
+.filter-tab.active, .filter-tab:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(232,89,60,0.06);
+}
+
+/* Cards */
+.cards-grid {
+  display: grid;
+  gap: 12px;
+}
+.repair-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  transition: border-color 0.15s, background 0.15s;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: start;
+  text-decoration: none;
+}
+.repair-card:hover {
+  border-color: var(--border2);
+  background: var(--bg3);
+}
+.card-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.card-symptoms {
+  font-size: 13px;
+  color: var(--text2);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: var(--mono);
+}
+.badge-severity-high { background: rgba(232,89,60,0.12); color: #e8593c; border: 1px solid rgba(232,89,60,0.2); }
+.badge-severity-med  { background: rgba(240,168,48,0.12); color: #f0a830; border: 1px solid rgba(240,168,48,0.2); }
+.badge-severity-low  { background: rgba(63,185,122,0.12); color: #3fb97a; border: 1px solid rgba(63,185,122,0.2); }
+.badge-type { background: rgba(74,159,212,0.1); color: #4a9fd4; border: 1px solid rgba(74,159,212,0.2); }
+.badge-cost { background: var(--bg3); color: var(--text2); border: 1px solid var(--border); }
+.badge-time { background: var(--bg3); color: var(--text2); border: 1px solid var(--border); }
+
+.card-side {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+.card-difficulty {
+  display: flex;
+  gap: 3px;
+}
+.diff-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--border2);
+}
+.diff-dot.filled { background: var(--accent2); }
+
+.card-arrow {
+  font-size: 18px;
+  color: var(--text2);
+  margin-top: 4px;
+}
+
+/* No results */
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text2);
+}
+.no-results .nr-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.no-results h3 { color: var(--text); margin-bottom: 0.5rem; font-weight: 400; }
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+  color: var(--text2);
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+.site-footer a { color: var(--text2); text-decoration: none; }
+.site-footer a:hover { color: var(--accent); }
+
+/* Highlight */
+mark {
+  background: rgba(232,89,60,0.25);
+  color: var(--accent);
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .site-header { padding: 0 1rem; }
+  .hero { padding: 2.5rem 1rem 1.5rem; }
+  .stats-bar { gap: 1.5rem; padding: 1rem; }
+  .results-area { padding: 0 1rem 3rem; }
+  .repair-card { grid-template-columns: 1fr; }
+  .card-side { flex-direction: row; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="#">
+    <div class="logo-icon">🔧</div>
+    <div>
+      <div class="logo-text">OHO Morocco</div>
+      <div class="logo-sub">مرصد الأجهزة المفتوحة</div>
+    </div>
+  </a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('ar')">العربية</button>
+    <button class="lang-btn" onclick="setLang('fr')">Français</button>
+    <button class="lang-btn" onclick="setLang('en')">English</button>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="hero-badge">🇲🇦 مفتوح المصدر · MIT License</div>
+    <h1 id="hero-title">اعرف <strong>عطل سكوترك</strong><br>قبل أن تفتح المحفظة</h1>
+    <p id="hero-sub">قاعدة بيانات حالات إصلاح حقيقية من المغرب — BMS، MOSFET، بطاريات، دوائر كهربائية</p>
+
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input
+        class="search-input"
+        id="searchInput"
+        type="text"
+        placeholder="صف العطل... مثلاً: لا يشحن، يتوقف فجأة..."
+        oninput="handleSearch(this.value)"
+        autocomplete="off"
+      >
+      <button class="search-clear" id="clearBtn" onclick="clearSearch()">✕</button>
+    </div>
+
+    <div class="quick-tags" id="quickTags">
+      <button class="quick-tag" onclick="quickSearch('لا يشحن')">🔋 لا يشحن</button>
+      <button class="quick-tag" onclick="quickSearch('يتوقف فجأة')">⚡ يتوقف فجأة</button>
+      <button class="quick-tag" onclick="quickSearch('MOSFET')">🔌 MOSFET محترق</button>
+      <button class="quick-tag" onclick="quickSearch('BMS')">🧠 BMS</button>
+      <button class="quick-tag" onclick="quickSearch('حرارة')">🌡️ ارتفاع حرارة</button>
+      <button class="quick-tag" onclick="quickSearch('بطيء')">🐢 يمشي ببطء</button>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-n" id="caseCount">0</div>
+      <div class="stat-l" id="stat1">حالة إصلاح</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-n">3</div>
+      <div class="stat-l" id="stat2">فئات</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-n">🇲🇦</div>
+      <div class="stat-l" id="stat3">أسعار السوق المحلي</div>
+    </div>
+  </div>
+
+  <div class="results-area">
+    <div class="results-header">
+      <div class="results-count" id="resultsCount"></div>
+      <div class="filter-tabs">
+        <button class="filter-tab active" onclick="setFilter('all', this)" id="tab-all">الكل</button>
+        <button class="filter-tab" onclick="setFilter('bms', this)">BMS</button>
+        <button class="filter-tab" onclick="setFilter('mosfet', this)">MOSFET</button>
+        <button class="filter-tab" onclick="setFilter('battery', this)" id="tab-bat">بطارية</button>
+      </div>
+    </div>
+    <div class="cards-grid" id="cardsGrid"></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <a href="https://github.com/boucettaabdelkhalek2/OHO-Morocco">GitHub</a>
+  <a href="https://github.com/boucettaabdelkhalek2/OHO-Morocco/issues/new?template=repair-case.yml">📋 أرسل حالة إصلاح</a>
+  <a href="https://github.com/boucettaabdelkhalek2/OHO-Morocco/blob/main/CONTRIBUTING.md">كيف تساهم</a>
+</footer>
+
+<script>
+// ============================================================
+// DATA — استبدل هذا بـ fetch() من ملفات JSON الخاصة بك
+// ============================================================
+const REPAIRS = [
+  {
+    id: "bms-001",
+    title: "BMS لا يشحن — الحرارة الزائدة",
+    titleFr: "BMS ne charge pas — Surtension thermique",
+    titleEn: "BMS not charging — Thermal overvoltage",
+    symptoms: ["لا يشحن", "ضوء الشحن أحمر ثابت", "يسخن بسرعة", "يقطع بعد دقائق"],
+    symptomsFr: ["ne charge pas", "led rouge fixe", "chauffe rapidement"],
+    symptomsEn: ["not charging", "red led solid", "overheating", "cuts after minutes"],
+    type: "bms",
+    severity: "high",
+    difficulty: 3,
+    costDh: "80–150",
+    timeMin: 90,
+    solution: "استبدال مكثفات التنعيم + فحص مقاومة الحمل",
+    solutionFr: "Remplacer condensateurs de lissage + tester résistance de charge",
+    path: "Scooter-Repairs/BMS-001/",
+    tags: ["BMS", "شحن", "حرارة"]
+  },
+  {
+    id: "mosfet-001",
+    title: "MOSFET محترق — الموتور لا يدور",
+    titleFr: "MOSFET grillé — Moteur bloqué",
+    titleEn: "Burned MOSFET — Motor not spinning",
+    symptoms: ["الموتور لا يدور", "رائحة احتراق", "يعطي صوت طقطقة", "LED تومض بسرعة"],
+    symptomsFr: ["moteur bloqué", "odeur de brûlé", "cliquetis"],
+    symptomsEn: ["motor not spinning", "burning smell", "clicking sound", "fast blinking led"],
+    type: "mosfet",
+    severity: "high",
+    difficulty: 4,
+    costDh: "40–80",
+    timeMin: 60,
+    solution: "قياس مقاومة MOSFET بالمولتيميتر + استبدال IRF3205",
+    solutionFr: "Mesurer résistance MOSFET + remplacer IRF3205",
+    path: "Scooter-Repairs/MOSFET-001/",
+    tags: ["MOSFET", "موتور", "IRF3205"]
+  },
+  {
+    id: "batt-001",
+    title: "خلية بطارية ميتة — انخفاض المدى",
+    titleFr: "Cellule morte — Autonomie réduite",
+    titleEn: "Dead cell — Reduced range",
+    symptoms: ["يمشي مسافة قصيرة", "يتوقف فجأة عند الصعود", "الشحن يكتمل بسرعة غير عادية"],
+    symptomsFr: ["faible autonomie", "s'arrête en côte", "charge rapide anormale"],
+    symptomsEn: ["short range", "stops on hills", "unusually fast charging"],
+    type: "battery",
+    severity: "med",
+    difficulty: 2,
+    costDh: "200–600",
+    timeMin: 120,
+    solution: "فحص voltages الخلايا بالمولتيميتر — الخلية أقل من 3V تُستبدل",
+    solutionFr: "Mesurer tension cellules — cellule < 3V à remplacer",
+    path: "Scooter-Repairs/BATTERY-001/",
+    tags: ["بطارية", "خلية", "مدى"]
+  },
+  {
+    id: "bms-002",
+    title: "BMS يقطع تحت الحمل",
+    titleFr: "BMS coupe sous charge",
+    titleEn: "BMS cuts under load",
+    symptoms: ["يتوقف فجأة عند التسارع", "يعود بعد التوقف", "لا مشكلة في السرعة البطيئة"],
+    symptomsFr: ["coupe à l'accélération", "redémarre après pause", "ok à faible vitesse"],
+    symptomsEn: ["cuts when accelerating", "restarts after pause", "fine at low speed"],
+    type: "bms",
+    severity: "med",
+    difficulty: 3,
+    costDh: "0–120",
+    timeMin: 45,
+    solution: "ضبط حد تيار الخروج في BMS أو استبدال MOSFET القوة",
+    solutionFr: "Ajuster seuil courant BMS ou remplacer MOSFET de puissance",
+    path: "Scooter-Repairs/BMS-002/",
+    tags: ["BMS", "حمل", "تيار"]
+  },
+  {
+    id: "ctrl-001",
+    title: "الكنترولر لا يستجيب",
+    titleFr: "Contrôleur ne répond pas",
+    titleEn: "Controller unresponsive",
+    symptoms: ["لا يتحرك رغم الشحن", "مؤشر البطارية يعمل", "لا صوت عند الإشعال"],
+    symptomsFr: ["ne bouge pas malgré charge complète", "indicateur batterie ok", "silencieux au démarrage"],
+    symptomsEn: ["no movement despite full charge", "battery indicator works", "silent on start"],
+    type: "mosfet",
+    severity: "high",
+    difficulty: 3,
+    costDh: "150–400",
+    timeMin: 30,
+    solution: "قياس جهد 5V للكنترولر — إذا غائب فحص مصدر الطاقة الداخلي",
+    solutionFr: "Mesurer 5V contrôleur — si absent vérifier alimentation interne",
+    path: "Scooter-Repairs/CTRL-001/",
+    tags: ["كنترولر", "إشعال", "5V"]
+  },
+  {
+    id: "batt-002",
+    title: "بطارية تنتفخ — خطر",
+    titleFr: "Batterie gonflée — Danger",
+    titleEn: "Swollen battery — Danger",
+    symptoms: ["الجسم ينتفخ من الأسفل", "رائحة غريبة", "يشحن بشكل غير طبيعي"],
+    symptomsFr: ["carter gonflé", "odeur étrange", "charge anormale"],
+    symptomsEn: ["case swelling from bottom", "strange smell", "abnormal charging"],
+    type: "battery",
+    severity: "high",
+    difficulty: 1,
+    costDh: "300–800",
+    timeMin: 15,
+    solution: "⚠️ لا تشحن! افصل فوراً وضع في مكان مفتوح. استبدال كامل للبطارية.",
+    solutionFr: "⚠️ Ne pas charger! Déconnecter et stocker à l'air libre. Remplacement total.",
+    path: "Scooter-Repairs/BATTERY-DANGER/",
+    tags: ["خطر", "انتفاخ", "سلامة"]
+  }
+];
+
+// ============================================================
+let currentLang = 'ar';
+let currentFilter = 'all';
+let currentQuery = '';
+
+const labels = {
+  ar: {
+    heroTitle: 'اعرف <strong>عطل سكوترك</strong><br>قبل أن تفتح المحفظة',
+    heroSub: 'قاعدة بيانات حالات إصلاح حقيقية من المغرب — BMS، MOSFET، بطاريات، دوائر كهربائية',
+    placeholder: 'صف العطل... مثلاً: لا يشحن، يتوقف فجأة...',
+    stat1: 'حالة إصلاح', stat2: 'فئات', stat3: 'أسعار السوق المحلي',
+    allTab: 'الكل', batTab: 'بطارية',
+    costLabel: 'درهم', timeLabel: 'دقيقة',
+    noResults: 'لا نتائج — جرّب كلمات أخرى',
+    noResultsSub: 'أو أرسل حالتك وسنضيفها للقاعدة',
+    results: 'نتيجة', of: 'من'
+  },
+  fr: {
+    heroTitle: 'Diagnostiquez <strong>votre scooter</strong><br>avant d\'ouvrir le portefeuille',
+    heroSub: 'Base de données de réparations réelles du Maroc — BMS, MOSFET, batteries, électronique',
+    placeholder: 'Décrivez la panne... ex: ne charge pas, s\'arrête soudain...',
+    stat1: 'cas de réparation', stat2: 'catégories', stat3: 'prix marché local',
+    allTab: 'Tout', batTab: 'Batterie',
+    costLabel: 'DH', timeLabel: 'min',
+    noResults: 'Aucun résultat — essayez d\'autres mots',
+    noResultsSub: 'Ou soumettez votre cas et nous l\'ajouterons',
+    results: 'résultats', of: 'sur'
+  },
+  en: {
+    heroTitle: 'Diagnose your <strong>scooter fault</strong><br>before opening your wallet',
+    heroSub: 'Real repair cases from Morocco — BMS, MOSFET, batteries, power electronics',
+    placeholder: 'Describe the fault... e.g: won\'t charge, stops suddenly...',
+    stat1: 'repair cases', stat2: 'categories', stat3: 'local market prices',
+    allTab: 'All', batTab: 'Battery',
+    costLabel: 'DH', timeLabel: 'min',
+    noResults: 'No results — try different keywords',
+    noResultsSub: 'Or submit your case and we\'ll add it to the database',
+    results: 'results', of: 'of'
+  }
+};
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  const L = labels[lang];
+  document.getElementById('hero-title').innerHTML = L.heroTitle;
+  document.getElementById('hero-sub').textContent = L.heroSub;
+  document.getElementById('searchInput').placeholder = L.placeholder;
+  document.getElementById('stat1').textContent = L.stat1;
+  document.getElementById('stat2').textContent = L.stat2;
+  document.getElementById('stat3').textContent = L.stat3;
+  document.getElementById('tab-all').textContent = L.allTab;
+  document.getElementById('tab-bat').textContent = L.batTab;
+  render();
+}
+
+function getTitle(r) {
+  if (currentLang === 'fr' && r.titleFr) return r.titleFr;
+  if (currentLang === 'en' && r.titleEn) return r.titleEn;
+  return r.title;
+}
+function getSymptoms(r) {
+  if (currentLang === 'fr' && r.symptomsFr) return r.symptomsFr;
+  if (currentLang === 'en' && r.symptomsEn) return r.symptomsEn;
+  return r.symptoms;
+}
+function getSolution(r) {
+  if (currentLang === 'fr' && r.solutionFr) return r.solutionFr;
+  return r.solution;
+}
+
+function highlight(text, q) {
+  if (!q) return text;
+  const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
+  return text.replace(re, '<mark>$1</mark>');
+}
+
+function scoreCard(r, q) {
+  if (!q) return 1;
+  const ql = q.toLowerCase();
+  const titleScore = getTitle(r).toLowerCase().includes(ql) ? 3 : 0;
+  const symScore = getSymptoms(r).some(s => s.toLowerCase().includes(ql)) ? 2 : 0;
+  const tagScore = r.tags && r.tags.some(t => t.toLowerCase().includes(ql)) ? 1 : 0;
+  const typeScore = r.type.toLowerCase().includes(ql) ? 1 : 0;
+  return titleScore + symScore + tagScore + typeScore;
+}
+
+function render() {
+  const q = currentQuery.trim();
+  const L = labels[currentLang];
+  let filtered = REPAIRS.filter(r => {
+    if (currentFilter !== 'all' && r.type !== currentFilter) return false;
+    if (!q) return true;
+    return scoreCard(r, q) > 0;
+  });
+  filtered.sort((a,b) => scoreCard(b, q) - scoreCard(a, q));
+
+  document.getElementById('caseCount').textContent = REPAIRS.length;
+  document.getElementById('resultsCount').textContent =
+    q ? `${filtered.length} ${L.results} ${L.of} ${REPAIRS.length}` : `${REPAIRS.length} ${L.stat1}`;
+
+  const grid = document.getElementById('cardsGrid');
+  if (filtered.length === 0) {
+    grid.innerHTML = `
+      <div class="no-results">
+        <div class="nr-icon">🔍</div>
+        <h3>${L.noResults}</h3>
+        <p>${L.noResultsSub}</p>
+        <br>
+        <a href="https://github.com/boucettaabdelkhalek2/OHO-Morocco/issues/new?template=repair-case.yml"
+           style="color:var(--accent);font-size:13px;">+ ${currentLang==='ar'?'أرسل حالتك':'Soumettre un cas'}</a>
+      </div>`;
+    return;
+  }
+
+  const sevMap = { high: 'badge-severity-high', med: 'badge-severity-med', low: 'badge-severity-low' };
+  const sevLabel = {
+    ar: { high: 'خطورة عالية', med: 'متوسط', low: 'بسيط' },
+    fr: { high: 'Critique', med: 'Moyen', low: 'Mineur' },
+    en: { high: 'Critical', med: 'Medium', low: 'Minor' }
+  };
+  const typeLabel = {
+    ar: { bms: 'BMS', mosfet: 'MOSFET / كنترولر', battery: 'بطارية' },
+    fr: { bms: 'BMS', mosfet: 'MOSFET / Contrôleur', battery: 'Batterie' },
+    en: { bms: 'BMS', mosfet: 'MOSFET / Controller', battery: 'Battery' }
+  };
+
+  grid.innerHTML = filtered.map(r => {
+    const title = highlight(getTitle(r), q);
+    const symptoms = getSymptoms(r).map(s => highlight(s, q)).join(' · ');
+    const dots = [1,2,3,4].map(i =>
+      `<div class="diff-dot ${i<=r.difficulty?'filled':''}"></div>`).join('');
+    const costLabel = currentLang==='ar' ? `${r.costDh} د.م` : `${r.costDh} ${labels[currentLang].costLabel}`;
+    const timeLabel = `${r.timeMin} ${labels[currentLang].timeLabel}`;
+    const ghUrl = `https://github.com/boucettaabdelkhalek2/OHO-Morocco/tree/main/${r.path}`;
+    return `
+      <a class="repair-card" href="${ghUrl}" target="_blank" rel="noopener">
+        <div>
+          <div class="card-title">${title}</div>
+          <div class="card-symptoms">${symptoms}</div>
+          <div class="card-meta">
+            <span class="badge ${sevMap[r.severity]}">${sevLabel[currentLang][r.severity]}</span>
+            <span class="badge badge-type">${typeLabel[currentLang][r.type]}</span>
+            <span class="badge badge-cost">💰 ${costLabel}</span>
+            <span class="badge badge-time">⏱ ${timeLabel}</span>
+          </div>
+        </div>
+        <div class="card-side">
+          <div class="card-difficulty">${dots}</div>
+          <div class="card-arrow">→</div>
+        </div>
+      </a>`;
+  }).join('');
+}
+
+function handleSearch(val) {
+  currentQuery = val;
+  document.getElementById('clearBtn').style.display = val ? 'block' : 'none';
+  render();
+}
+
+function clearSearch() {
+  const inp = document.getElementById('searchInput');
+  inp.value = '';
+  currentQuery = '';
+  document.getElementById('clearBtn').style.display = 'none';
+  inp.focus();
+  render();
+}
+
+function quickSearch(term) {
+  const inp = document.getElementById('searchInput');
+  inp.value = term;
+  handleSearch(term);
+  inp.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function setFilter(type, btn) {
+  currentFilter = type;
+  document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+// Init
+render();
+</script>
+</body>
+</html>

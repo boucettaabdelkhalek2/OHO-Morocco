@@ -1,0 +1,125 @@
+{
+  "_schema": "oho-repair-case-v1",
+  "_instructions": {
+    "ar": "انسخ هذا الملف وأعد تسميته باسم الحالة، ثم أكمل جميع الحقول. الحقول المطلوبة مشار إليها بـ REQUIRED.",
+    "fr": "Copier ce fichier, le renommer avec l'ID du cas, remplir tous les champs. Les champs requis sont marqués REQUIRED.",
+    "en": "Copy this file, rename it with the case ID, fill in all fields. Required fields are marked REQUIRED."
+  },
+
+  "id": "REQUIRED — e.g. BMS-003 / MOSFET-004 / BATT-002",
+  "date": "REQUIRED — YYYY-MM-DD",
+  "author": "GitHub username or nickname",
+  "location": "Morocco city or region",
+  "status": "REQUIRED — one of: confirmed / unverified / wip",
+
+  "device": {
+    "type": "REQUIRED — scooter / ebike / cargo-tricycle / other",
+    "brand": "brand name or unknown",
+    "model": "model name or unknown",
+    "voltage": "REQUIRED — 36V / 48V / 60V / 72V",
+    "km_estimate": "approximate odometer reading if known"
+  },
+
+  "failure": {
+    "title": {
+      "ar": "REQUIRED — عنوان قصير يصف العطل",
+      "fr": "REQUIRED — titre court décrivant la panne",
+      "en": "REQUIRED — short title describing the fault"
+    },
+    "symptoms": {
+      "ar": ["REQUIRED — الأعراض التي يراها المستخدم، واحد لكل سطر"],
+      "fr": ["REQUIRED — symptômes observés par l'utilisateur"],
+      "en": ["REQUIRED — symptoms observed by the user"]
+    },
+    "severity": "REQUIRED — high / medium / low",
+    "type": "REQUIRED — bms / mosfet / battery / controller / wiring / motor / other",
+    "tags": ["REQUIRED — كلمات مفتاحية للبحث", "keywords for search"]
+  },
+
+  "diagnosis": {
+    "tools_required": [
+      "multimeter",
+      "soldering iron (optional)",
+      "نوع أي أداة أخرى"
+    ],
+    "steps": {
+      "ar": [
+        "1. قِس الجهد بين + و – في مدخل الشاحن",
+        "2. إذا كان 0V ابحث عن انقطاع في الكبلات",
+        "3. أضف خطوات أخرى..."
+      ],
+      "fr": [
+        "1. Mesurer tension entre + et – entrée chargeur",
+        "2. Si 0V chercher coupure dans câbles",
+        "3. Ajouter d'autres étapes..."
+      ],
+      "en": [
+        "1. Measure voltage between + and – at charger input",
+        "2. If 0V look for cable break",
+        "3. Add more steps..."
+      ]
+    },
+    "measurements": {
+      "note": "Actual measurements from this repair",
+      "battery_voltage_open_circuit": "e.g. 48.2V",
+      "battery_voltage_under_load": "e.g. 43.1V",
+      "mosfet_resistance": "e.g. 0.4 Ohm (healthy) / OL (burned)",
+      "charger_output": "e.g. 54.6V @ 2A",
+      "other": {}
+    },
+    "root_cause": {
+      "ar": "السبب الجذري للعطل",
+      "fr": "Cause racine de la panne",
+      "en": "Root cause of the fault"
+    }
+  },
+
+  "solution": {
+    "summary": {
+      "ar": "REQUIRED — ملخص الحل في جملة واحدة",
+      "fr": "REQUIRED — résumé de la solution en une phrase",
+      "en": "REQUIRED — one-sentence solution summary"
+    },
+    "parts_replaced": [
+      {
+        "name": "e.g. MOSFET IRF3205",
+        "quantity": 4,
+        "cost_dh": 40,
+        "source": "e.g. Derb Omar Casablanca / AliExpress"
+      }
+    ],
+    "total_cost_dh": "REQUIRED — 0 if no parts",
+    "labor_time_minutes": "REQUIRED — integer",
+    "difficulty": "REQUIRED — 1 to 5 (1=beginner, 5=expert)",
+    "skills_needed": ["soldering", "multimeter", "BMS programming"],
+    "warnings": {
+      "ar": ["⚠️ تحذيرات السلامة إن وجدت"],
+      "en": ["⚠️ Safety warnings if any"]
+    }
+  },
+
+  "outcome": {
+    "result": "REQUIRED — fixed / partial / failed",
+    "verified_by": "GitHub username of second person who verified (optional)",
+    "notes": {
+      "ar": "ملاحظات إضافية بعد الإصلاح",
+      "en": "Additional notes after repair"
+    }
+  },
+
+  "media": {
+    "note": "Place images in the same folder as this JSON file",
+    "images": [
+      { "filename": "before.jpg", "caption_ar": "قبل الإصلاح", "caption_en": "Before repair" },
+      { "filename": "burned-mosfet.jpg", "caption_ar": "MOSFET المحترق", "caption_en": "Burned MOSFET" },
+      { "filename": "after.jpg", "caption_ar": "بعد الإصلاح", "caption_en": "After repair" }
+    ],
+    "schematic": "optional — filename of wiring diagram or schematic"
+  },
+
+  "links": {
+    "blueprint": "optional — path to related blueprint e.g. blueprints/bms-replacement.md",
+    "intelligence_failure": "optional — path to failure type e.g. intelligence/failures/bms-overcurrent.json",
+    "external": []
+  }
+}

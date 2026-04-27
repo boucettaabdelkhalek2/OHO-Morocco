@@ -1,0 +1,171 @@
+name: "📋 حالة إصلاح جديدة / Nouveau cas de réparation / New Repair Case"
+description: |
+  أرسل حالة إصلاح حقيقية لتضاف لقاعدة البيانات
+  Soumettre un cas réel pour l'ajouter à la base de données
+  Submit a real repair case to add to the database
+title: "[REPAIR] "
+labels: ["repair-case", "needs-review"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🔧 شكراً لمساهمتك / Merci pour votre contribution / Thank you for contributing!
+        
+        ملء هذا النموذج يساعد الآخرين في إصلاح أجهزتهم.
+        Remplir ce formulaire aide d'autres à réparer leurs appareils.
+        
+        **الحقول المطلوبة مشار إليها بـ *** / *Les champs requis sont marqués **
+
+  - type: dropdown
+    id: device_type
+    attributes:
+      label: "نوع الجهاز / Type d'appareil / Device Type *"
+      options:
+        - "سكوتر كهربائي / Scooter électrique / Electric Scooter"
+        - "دراجة كهربائية / Vélo électrique / E-Bike"
+        - "تريسيكل بضائع / Triporteur / Cargo Tricycle"
+        - "أخرى / Autre / Other"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: voltage
+    attributes:
+      label: "الجهد / Tension / Voltage *"
+      options:
+        - "36V"
+        - "48V"
+        - "60V"
+        - "72V"
+        - "غير معروف / Inconnu / Unknown"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: failure_type
+    attributes:
+      label: "نوع العطل / Type de panne / Failure Type *"
+      options:
+        - "BMS"
+        - "MOSFET / Controller"
+        - "Battery / Batterie / بطارية"
+        - "Motor / Moteur / موتور"
+        - "Wiring / Câblage / أسلاك"
+        - "Display / Écran / شاشة"
+        - "Charger / Chargeur / شاحن"
+        - "Other / Autre / أخرى"
+    validations:
+      required: true
+
+  - type: textarea
+    id: symptoms
+    attributes:
+      label: "الأعراض / Symptômes / Symptoms *"
+      description: |
+        صف ما يراه المستخدم / Décrivez ce que l'utilisateur voit / Describe what the user sees
+        مثال: لا يشحن، يتوقف عند الصعود، رائحة احتراق
+      placeholder: |
+        - الأعراض / Symptôme 1 / Symptom 1
+        - الأعراض / Symptôme 2 / Symptom 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: measurements
+    attributes:
+      label: "القياسات / Mesures / Measurements"
+      description: |
+        قراءات المولتيميتر أو أي قياسات أخرى (اختياري)
+        Relevés multimètre ou autres mesures (optionnel)
+      placeholder: |
+        Battery open circuit: 48.2V
+        Battery under load: 40.1V
+        MOSFET resistance: OL (burned)
+        Charger output: 0V
+
+  - type: textarea
+    id: root_cause
+    attributes:
+      label: "السبب الجذري / Cause racine / Root Cause *"
+      description: |
+        ما هو سبب العطل بعد التشخيص؟
+        Quelle est la cause après diagnostic?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: "الحل / Solution *"
+      description: |
+        ماذا فعلت لإصلاحه؟ اذكر القطع المستبدلة.
+        Qu'avez-vous fait pour le réparer? Mentionnez les pièces remplacées.
+      placeholder: |
+        1. قست مقاومة MOSFET بالمولتيميتر — كانت OL
+        2. استبدلت 4 قطع IRF3205
+        3. اختبرت الجهاز — يعمل بشكل طبيعي
+    validations:
+      required: true
+
+  - type: input
+    id: cost_dh
+    attributes:
+      label: "تكلفة القطع (درهم) / Coût pièces (DH) / Parts cost (DH)"
+      placeholder: "ex: 80 / غير مكلف / free"
+
+  - type: input
+    id: time_minutes
+    attributes:
+      label: "وقت الإصلاح بالدقائق / Temps de réparation (min) / Repair time (min)"
+      placeholder: "ex: 60"
+
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: "مستوى الصعوبة / Niveau de difficulté / Difficulty Level"
+      options:
+        - "1 — مبتدئ / Débutant / Beginner"
+        - "2 — أساسي / Basique / Basic"
+        - "3 — متوسط / Intermédiaire / Intermediate"
+        - "4 — متقدم / Avancé / Advanced"
+        - "5 — خبير / Expert / Expert"
+
+  - type: dropdown
+    id: result
+    attributes:
+      label: "النتيجة / Résultat / Outcome *"
+      options:
+        - "✅ تم الإصلاح / Réparé / Fixed"
+        - "⚠️ إصلاح جزئي / Partiel / Partial fix"
+        - "❌ لم ينجح / Échec / Failed"
+    validations:
+      required: true
+
+  - type: textarea
+    id: warnings
+    attributes:
+      label: "⚠️ تحذيرات السلامة / Avertissements sécurité / Safety Warnings"
+      description: "أي خطر يجب تنبيه المستخدمين عليه / Tout danger à signaler"
+      placeholder: "مثال: لا تشحن البطارية المنتفخة / Ex: Ne jamais charger une batterie gonflée"
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "قائمة التحقق / Checklist"
+      options:
+        - label: "الإصلاح حقيقي وجربته بنفسي / La réparation est réelle et testée / This is a real repair I tested"
+          required: true
+        - label: "لا توجد معلومات شخصية في هذا النموذج / Aucune info personnelle / No personal info included"
+          required: true
+        - label: "أوافق على نشر هذه المعلومات بترخيص MIT / J'accepte la licence MIT / I agree to MIT license"
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        📸 **يمكنك إرفاق صور مباشرة** بالسحب والإفلات في هذا النموذج
+        📸 **Vous pouvez joindre des photos** par glisser-déposer dans ce formulaire  
+        📸 **You can attach images** by dragging and dropping into this form
