@@ -1,0 +1,61 @@
+name: Auto Deploy OHO Morocco
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # تشغيل يدوي من GitHub
+
+jobs:
+  cleanup-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Remove misplaced files from root
+        run: |
+          git config user.name "OHO Bot"
+          git config user.email "bot@oho-morocco.github.io"
+
+          # احذف الملفات في الأماكن الخاطئة
+          if [ -f "repair-case.yml" ]; then
+            git rm repair-case.yml
+            echo "✅ Removed repair-case.yml from root"
+          fi
+
+          if [ -f "TEMPLATE-repair-case.json" ]; then
+            git rm TEMPLATE-repair-case.json
+            echo "✅ Removed TEMPLATE-repair-case.json from root"
+          fi
+
+          # تنظيف المجلد المتداخل الخاطئ
+          if [ -d "intelligence/parser/intelligence" ]; then
+            git rm -r intelligence/parser/intelligence
+            echo "✅ Cleaned nested intelligence/parser/intelligence"
+          fi
+
+      - name: Validate docs folder
+        run: |
+          echo "📁 docs/ contents:"
+          ls -la docs/
+          echo ""
+          echo "📁 cases/ contents:"
+          ls -la cases/
+          echo ""
+          echo "📁 intelligence/ contents:"
+          ls -la intelligence/
+
+      - name: Commit cleanup if needed
+        run: |
+          if git diff --staged --quiet; then
+            echo "Nothing to commit — repo is clean ✅"
+          else
+            git commit -m "chore: auto-cleanup misplaced files [bot]"
+            git push
+            echo "✅ Cleanup committed and pushed"
+          fi
