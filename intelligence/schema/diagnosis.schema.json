@@ -1,0 +1,19 @@
+{
+  "symptom": "no_power",
+  "checks": [
+    {
+      "step": "Check battery voltage",
+      "if": "voltage < 30V",
+      "result": "battery_dead"
+    },
+    {
+      "step": "Check BMS output",
+      "if": "no_output",
+      "result": "bms_fault"
+    }
+  ],
+  "solutions": {
+    "battery_dead": "Replace or balance cells",
+    "bms_fault": "Replace BMS or repair MOSFET"
+  }
+}
