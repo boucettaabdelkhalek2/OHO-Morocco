@@ -431,7 +431,7 @@ async function sendMessage() {
   const typingId = addTyping();
 
   try {
-    const response = await fetch('/api/v2/diagnose', {
+    const response = await fetch('https://oho-morocco-api.onrender.com/api/v2/diagnose', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
