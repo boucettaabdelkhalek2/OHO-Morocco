@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: oho-morocco-api
+    runtime: node
+    buildCommand: npm install
+    startCommand: node api/server.js
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: ANTHROPIC_API_KEY
+        sync: false
