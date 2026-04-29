@@ -1,0 +1,14 @@
+{
+  "name": "oho-morocco-platform",
+  "version": "2.0.0",
+  "main": "api/server.js",
+  "scripts": {
+    "start": "node api/server.js",
+    "dev":   "nodemon api/server.js",
+    "test":  "node tests/engine.test.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "license": "MIT"
+}
