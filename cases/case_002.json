@@ -1,0 +1,12 @@
+{
+  "id": "case_002",
+  "device": "scooter",
+  "voltage": "48V",
+  "problem": "not charging",
+  "component": "BMS",
+  "cause": "burned capacitors",
+  "solution": "replace smoothing capacitors",
+  "cost_dh": 120,
+  "time_min": 90,
+  "status": "fixed"
+}
