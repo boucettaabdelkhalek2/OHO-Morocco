@@ -1,11 +1,11 @@
 "use strict";
 
 const express           = require("express");
-const { RuleEngine }    = require("../engine/rule-engine");
+const { RuleEngine, ALL_RULES } = require("../engine/rule-engine");
 const { DatasetSystem } = require("../dataset/dataset");
 
 const app    = express();
-const engine = new RuleEngine();
+const engine = new RuleEngine(ALL_RULES);
 const ds     = new DatasetSystem();
 
 app.use(express.json({ limit: "16kb" }));
