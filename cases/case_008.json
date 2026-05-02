@@ -1,0 +1,12 @@
+{
+  "id": "case_008",
+  "device": "scooter",
+  "voltage": "48V",
+  "problem": "throttle not responding",
+  "component": "throttle",
+  "cause": "hall sensor failure inside throttle grip",
+  "solution": "replace throttle grip assembly",
+  "cost_dh": 60,
+  "time_min": 20,
+  "status": "fixed"
+}

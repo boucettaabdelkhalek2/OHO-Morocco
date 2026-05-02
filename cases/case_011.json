@@ -1,0 +1,12 @@
+{
+  "id": "case_011",
+  "device": "ebike",
+  "voltage": "36V",
+  "problem": "pedal assist not working",
+  "component": "PAS_sensor",
+  "cause": "PAS magnet ring misaligned",
+  "solution": "realign magnet ring on crank, clean sensor",
+  "cost_dh": 0,
+  "time_min": 20,
+  "status": "fixed"
+}

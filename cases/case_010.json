@@ -1,0 +1,12 @@
+{
+  "id": "case_010",
+  "device": "scooter",
+  "voltage": "48V",
+  "problem": "brake not cutting motor",
+  "component": "brake_sensor",
+  "cause": "brake cutoff switch disconnected",
+  "solution": "reconnect or replace brake lever switch",
+  "cost_dh": 30,
+  "time_min": 15,
+  "status": "fixed"
+}

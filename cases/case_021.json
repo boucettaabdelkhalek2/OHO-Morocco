@@ -1,0 +1,12 @@
+{
+  "id": "case_021",
+  "device": "scooter",
+  "voltage": "72V",
+  "problem": "regenerative braking too aggressive",
+  "component": "controller",
+  "cause": "regen parameter set too high",
+  "solution": "reduce regen level in controller settings",
+  "cost_dh": 0,
+  "time_min": 10,
+  "status": "fixed"
+}

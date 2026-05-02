@@ -1,0 +1,12 @@
+{
+  "id": "case_018",
+  "device": "scooter",
+  "voltage": "60V",
+  "problem": "one phase motor stutter",
+  "component": "controller",
+  "cause": "one MOSFET phase shorted in controller",
+  "solution": "replace faulty phase MOSFET or full controller",
+  "cost_dh": 320,
+  "time_min": 75,
+  "status": "fixed"
+}

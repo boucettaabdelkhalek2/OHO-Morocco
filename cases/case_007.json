@@ -1,0 +1,12 @@
+{
+  "id": "case_007",
+  "device": "scooter",
+  "voltage": "72V",
+  "problem": "motor overheating",
+  "component": "motor",
+  "cause": "blocked ventilation + worn bearings",
+  "solution": "clean ventilation slots, replace bearings",
+  "cost_dh": 150,
+  "time_min": 90,
+  "status": "fixed"
+}

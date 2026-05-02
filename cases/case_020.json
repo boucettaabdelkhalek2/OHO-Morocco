@@ -1,0 +1,12 @@
+{
+  "id": "case_020",
+  "device": "scooter",
+  "voltage": "48V",
+  "problem": "scooter works but app disconnects",
+  "component": "bluetooth",
+  "cause": "BT module firmware outdated",
+  "solution": "update firmware via manufacturer app, re-pair device",
+  "cost_dh": 0,
+  "time_min": 15,
+  "status": "fixed"
+}

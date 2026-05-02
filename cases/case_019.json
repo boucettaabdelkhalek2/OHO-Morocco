@@ -1,0 +1,12 @@
+{
+  "id": "case_019",
+  "device": "ebike",
+  "voltage": "36V",
+  "problem": "battery percentage wrong",
+  "component": "BMS",
+  "cause": "BMS fuel gauge not calibrated after cell replacement",
+  "solution": "full discharge then full charge cycle x3 to recalibrate",
+  "cost_dh": 0,
+  "time_min": 480,
+  "status": "fixed"
+}

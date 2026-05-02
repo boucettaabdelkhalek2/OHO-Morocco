@@ -1,0 +1,12 @@
+{
+  "id": "case_012",
+  "device": "scooter",
+  "voltage": "48V",
+  "problem": "charger gets hot and stops",
+  "component": "charger",
+  "cause": "internal thermal protection tripping — dust blocked fan",
+  "solution": "clean charger fan, charge in ventilated area",
+  "cost_dh": 0,
+  "time_min": 10,
+  "status": "fixed"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "case_013",
+  "device": "scooter",
+  "voltage": "60V",
+  "problem": "speed limited to 6 km/h",
+  "component": "controller",
+  "cause": "walk mode activated accidentally",
+  "solution": "hold power button 3 seconds to exit walk mode",
+  "cost_dh": 0,
+  "time_min": 1,
+  "status": "fixed"
+}

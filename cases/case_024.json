@@ -1,0 +1,12 @@
+{
+  "id": "case_024",
+  "device": "scooter",
+  "voltage": "36V",
+  "problem": "battery drains overnight with no use",
+  "component": "BMS",
+  "cause": "BMS parasitic drain — protection circuit fault",
+  "solution": "replace BMS protection board",
+  "cost_dh": 95,
+  "time_min": 60,
+  "status": "fixed"
+}
