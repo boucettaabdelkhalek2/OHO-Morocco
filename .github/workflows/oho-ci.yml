@@ -1,0 +1,37 @@
+name: OHO Morocco CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install
+      - name: Run engine tests
+        run: node tests/engine.test.js
+      - name: Validate case files
+        run: |
+          for f in cases/*.json; do
+            node -e "
+              const c = require('./$f');
+              const required = ['id','device','problem','component','cause','solution','status'];
+              const missing = required.filter(k => !c[k]);
+              if (missing.length) { console.error('FAIL $f missing:', missing); process.exit(1); }
+              console.log('OK $f');
+            "
+          done
+      - name: Check for exposed secrets
+        run: |
+          if grep -r "sk-ant-" --include="*.js" --include="*.html" --include="*.json" . | grep -v node_modules; then
+            echo "EXPOSED API KEY FOUND"; exit 1
+          fi
+          echo "No secrets exposed"
