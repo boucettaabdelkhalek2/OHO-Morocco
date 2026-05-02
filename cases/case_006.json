@@ -1,0 +1,12 @@
+{
+  "id": "case_006",
+  "device": "scooter",
+  "voltage": "48V",
+  "problem": "controller unresponsive",
+  "component": "controller",
+  "cause": "internal 5V PSU failed",
+  "solution": "replace controller unit",
+  "cost_dh": 280,
+  "time_min": 30,
+  "status": "fixed"
+}
