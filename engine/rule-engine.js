@@ -160,3 +160,33 @@ class RuleEngine {
 }
 
 module.exports = { RuleEngine, RULES, SEVERITY };
+
+// Extended rules v3.1
+const EXTENDED_RULES = [
+  { id:"THROTTLE_FAILURE", component:"Throttle", severity:SEVERITY.MEDIUM,
+    symptoms:[{keyword:"throttle not responding",weight:0.90},{keyword:"no acceleration",weight:0.75}],
+    solution:{en:"Replace throttle grip assembly. Cost 60 MAD.",ar:"استبدل مقبض الغاز.",fr:"Remplacer poignee accelerateur."},
+    cost:{min:40,max:80},timeMin:20,difficulty:2,warning:null},
+  { id:"WIRING_LOOSE", component:"Wiring", severity:SEVERITY.MEDIUM,
+    symptoms:[{keyword:"flickering lights",weight:0.85},{keyword:"random shutdowns",weight:0.80},{keyword:"loose connector",weight:0.90}],
+    solution:{en:"Reseat main battery connector, apply contact cleaner. Cost 20 MAD.",ar:"أعد توصيل الموصل الرئيسي.",fr:"Remettre connecteur batterie en place."},
+    cost:{min:10,max:40},timeMin:20,difficulty:1,warning:null},
+  { id:"WATER_DAMAGE", component:"Controller", severity:SEVERITY.HIGH,
+    symptoms:[{keyword:"water damage",weight:0.95},{keyword:"after rain",weight:0.90},{keyword:"corrosion",weight:0.75}],
+    solution:{en:"Dry with silica gel 48h. Reseal housing with silicone. Cost 25 MAD.",ar:"جفف 48 ساعة مع السيليكا.",fr:"Secher 48h gel silice, resceller boitier."},
+    cost:{min:20,max:300},timeMin:60,difficulty:2,warning:null},
+  { id:"CHARGER_FAULT", component:"Charger", severity:SEVERITY.MEDIUM,
+    symptoms:[{keyword:"charger gets hot",weight:0.85},{keyword:"charger stops",weight:0.80},{keyword:"not reaching full charge",weight:0.75}],
+    solution:{en:"Check charger output voltage. Must be 58.8V for 48V battery. Replace if lower.",ar:"تحقق من جهد خرج الشاحن يجب 58.8V.",fr:"Verifier tension sortie 58.8V pour 48V."},
+    cost:{min:0,max:200},timeMin:15,difficulty:1,warning:null},
+  { id:"MOTOR_NOISE", component:"Motor", severity:SEVERITY.MEDIUM,
+    symptoms:[{keyword:"grinding noise",weight:0.90},{keyword:"motor noise",weight:0.85},{keyword:"worn bearings",weight:0.90}],
+    solution:{en:"Open motor, clean debris, replace hall sensor board if faulty. Cost 120 MAD.",ar:"افتح المحرك ونظفه واستبدل hall sensor.",fr:"Ouvrir moteur, nettoyer, remplacer hall sensor."},
+    cost:{min:80,max:200},timeMin:120,difficulty:4,warning:null},
+  { id:"WALK_MODE", component:"Controller", severity:SEVERITY.LOW,
+    symptoms:[{keyword:"limited to 6",weight:0.95},{keyword:"walk mode",weight:0.95},{keyword:"slow mode",weight:0.70}],
+    solution:{en:"Walk mode on. Hold power button 3 seconds to exit. Free.",ar:"وضع المشي مفعل. اضغط زر الطاقة 3 ثوان.",fr:"Mode marche. Maintenir power 3 secondes."},
+    cost:{min:0,max:0},timeMin:1,difficulty:1,warning:null},
+];
+module.exports.EXTENDED_RULES = EXTENDED_RULES;
+module.exports.ALL_RULES = [...RULES, ...EXTENDED_RULES];
