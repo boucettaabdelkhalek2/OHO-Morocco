@@ -1,0 +1,12 @@
+{
+  "id": "case_003",
+  "device": "scooter",
+  "voltage": "60V",
+  "problem": "short range",
+  "component": "battery",
+  "cause": "dead cell at 2.1V",
+  "solution": "replace dead cell, rebalance pack",
+  "cost_dh": 350,
+  "time_min": 120,
+  "status": "fixed"
+}

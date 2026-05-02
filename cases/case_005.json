@@ -1,0 +1,12 @@
+{
+  "id": "case_005",
+  "device": "scooter",
+  "voltage": "36V",
+  "problem": "battery swollen",
+  "component": "battery",
+  "cause": "overcharge due to faulty charger",
+  "solution": "replace battery pack and charger",
+  "cost_dh": 650,
+  "time_min": 60,
+  "status": "fixed"
+}

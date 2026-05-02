@@ -1,0 +1,12 @@
+{
+  "id": "case_004",
+  "device": "scooter",
+  "voltage": "48V",
+  "problem": "cuts when accelerating",
+  "component": "BMS",
+  "cause": "overcurrent threshold too low",
+  "solution": "adjust BMS overcurrent setting to 30A",
+  "cost_dh": 0,
+  "time_min": 30,
+  "status": "fixed"
+}
