@@ -1,12 +1,1 @@
-{
-  "id": "case_009",
-  "device": "scooter",
-  "voltage": "60V",
-  "problem": "display not working",
-  "component": "display",
-  "cause": "broken ribbon cable connector",
-  "solution": "reseat ribbon cable, replace display if cracked",
-  "cost_dh": 90,
-  "time_min": 25,
-  "status": "fixed"
-}
+{"id":"case_009","device":"scooter","voltage":"60V","problem":"display not working","component":"display","cause":"broken ribbon cable connector","solution":"reseat ribbon cable, replace display if cracked","cost_dh":90,"time_min":25,"status":"fixed"}

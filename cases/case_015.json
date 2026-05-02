@@ -1,12 +1,1 @@
-{
-  "id": "case_015",
-  "device": "ebike",
-  "voltage": "48V",
-  "problem": "motor making grinding noise",
-  "component": "motor",
-  "cause": "debris inside motor casing, worn hall sensors",
-  "solution": "open motor, clean, replace hall sensor board",
-  "cost_dh": 120,
-  "time_min": 120,
-  "status": "fixed"
-}
+{"id":"case_015","device":"ebike","voltage":"48V","problem":"motor making grinding noise","component":"motor","cause":"debris inside motor casing and worn hall sensors","solution":"open motor, clean, replace hall sensor board","cost_dh":120,"time_min":120,"status":"fixed"}

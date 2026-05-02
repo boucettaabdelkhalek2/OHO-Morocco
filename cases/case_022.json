@@ -1,12 +1,1 @@
-{
-  "id": "case_022",
-  "device": "scooter",
-  "voltage": "48V",
-  "problem": "water damage after rain",
-  "component": "controller",
-  "cause": "water ingress through unsealed controller housing",
-  "solution": "dry with silica gel 48h, reseal housing with silicone",
-  "cost_dh": 25,
-  "time_min": 60,
-  "status": "fixed"
-}
+{"id":"case_022","device":"scooter","voltage":"48V","problem":"water damage after rain","component":"controller","cause":"water ingress through unsealed controller housing","solution":"dry with silica gel 48h, reseal housing with silicone","cost_dh":25,"time_min":60,"status":"fixed"}

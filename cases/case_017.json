@@ -1,12 +1,1 @@
-{
-  "id": "case_017",
-  "device": "scooter",
-  "voltage": "48V",
-  "problem": "flickering lights and random shutdowns",
-  "component": "wiring",
-  "cause": "loose main battery connector causing voltage drops",
-  "solution": "reseat and secure main connector, apply contact cleaner",
-  "cost_dh": 20,
-  "time_min": 20,
-  "status": "fixed"
-}
+{"id":"case_017","device":"scooter","voltage":"48V","problem":"flickering lights and random shutdowns","component":"wiring","cause":"loose main battery connector causing voltage drops","solution":"reseat and secure main connector, apply contact cleaner","cost_dh":20,"time_min":20,"status":"fixed"}

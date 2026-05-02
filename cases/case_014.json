@@ -1,12 +1,1 @@
-{
-  "id": "case_014",
-  "device": "scooter",
-  "voltage": "48V",
-  "problem": "battery not reaching full charge",
-  "component": "charger",
-  "cause": "charger output voltage too low — 54V instead of 58.8V",
-  "solution": "replace charger, verify output voltage before use",
-  "cost_dh": 180,
-  "time_min": 10,
-  "status": "fixed"
-}
+{"id":"case_014","device":"scooter","voltage":"48V","problem":"battery not reaching full charge","component":"charger","cause":"charger output voltage too low 54V instead of 58.8V","solution":"replace charger, verify output voltage before use","cost_dh":180,"time_min":10,"status":"fixed"}

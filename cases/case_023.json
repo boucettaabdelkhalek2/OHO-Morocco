@@ -1,12 +1,1 @@
-{
-  "id": "case_023",
-  "device": "ebike",
-  "voltage": "48V",
-  "problem": "error code 21 on display",
-  "component": "motor",
-  "cause": "hall sensor wire broken near motor exit",
-  "solution": "repair hall sensor wire, use heat shrink at flex point",
-  "cost_dh": 15,
-  "time_min": 45,
-  "status": "fixed"
-}
+{"id":"case_023","device":"ebike","voltage":"48V","problem":"error code 21 on display","component":"motor","cause":"hall sensor wire broken near motor exit","solution":"repair hall sensor wire, use heat shrink at flex point","cost_dh":15,"time_min":45,"status":"fixed"}

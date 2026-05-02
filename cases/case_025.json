@@ -1,12 +1,1 @@
-{
-  "id": "case_025",
-  "device": "scooter",
-  "voltage": "60V",
-  "problem": "loud beeping on startup",
-  "component": "BMS",
-  "cause": "cell imbalance detected — one cell group at 3.1V rest at 4.1V",
-  "solution": "manual balance cells with balance charger, replace weakest cell",
-  "cost_dh": 220,
-  "time_min": 180,
-  "status": "fixed"
-}
+{"id":"case_025","device":"scooter","voltage":"60V","problem":"loud beeping on startup","component":"BMS","cause":"cell imbalance detected one cell group at 3.1V rest at 4.1V","solution":"manual balance cells with balance charger, replace weakest cell","cost_dh":220,"time_min":180,"status":"fixed"}
